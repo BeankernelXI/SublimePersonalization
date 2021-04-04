@@ -1,0 +1,52 @@
+TODO:
+
+ghost pepper:
+  rescue
+    bonus points: mark the location of the error
+soup:
+  move to gap:
+    up should leave cursor at soft BOL, especially with extend on
+    --
+    option to only match lines at the same indentation
+  smartnewline:
+    if next line has stuff on it,
+      option to not newline but insert whitespace upto the appropriate column
+      ex: this_is(the: current_line)        # I'm pressing enter here
+          even.tho(this.is.here)            # cursor ends up here
+      shift+enter for this ^^
+    also,
+      there's potential to be smart about jumping outof the middle of a comment
+  delete to:
+    ctrl+super+delete to delete to soft bol
+  add line:
+    multiple cursors on the same line probably wants to make many newlines
+  controlled way to clear all but one cursor
+  --
+  fancy copy:
+    research putting delimeters between regions
+      the paste commands are not smart enough when pasting multiline regions
+
+fancy:
+  find_under:
+    option to only select whole words
+      use case: selection is a whole word (thing)
+                but results find it used as part of a word (thing_factory)
+  upcase and downcase with empty selector:
+    change case of the word the cursor is in without affecting the cursor
+    maybe this has an option for toggling between snake and title too
+  same idea as ^^ but convert to ruby symbol
+  --
+  duplicate:
+    super+d context selection not empty:
+      dup the selection onto a new line (instead of in place)
+      consider putting it on the preceding line?
+
+general:
+  investigate super+[ and clean up commands to improve it
+
+bakewell:
+  join also lets us modify each string
+    eg add colon before each to change variable names into symbols
+
+new ideas:
+  keep column markers using similar tech to the groups

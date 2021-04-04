@@ -1,0 +1,37 @@
+{
+	"added_words":
+	[
+		"meme"
+	],
+	"auto_complete": false,
+	"auto_complete_commit_on_tab": true,
+	"auto_find_in_selection": true,
+	"binary_file_patterns":
+	[
+		".html",
+		".sql"
+	],
+	"color_scheme": "Packages/User/Monokai1.tmTheme",
+	"default_font_size": 12,
+	"font_size": 12,
+	"drag_text": false,
+	"ensure_newline_at_eof_on_save": true,
+	"ignored_packages":
+	[
+		"Vintage"
+	],
+	"mini_diff": true,
+	"save_on_focus_lost": true,
+	"scroll_past_end": true,
+	"shift_tab_unindent": true,
+	"spell_check": false,
+	"spelling_selector": "markup.raw, source comment - source comment.block.preprocessor, -(source, constant, keyword, storage, support, variable, markup.underline.link, meta.tag)",
+	"tab_size": 2,
+	"theme": "Default.sublime-theme",
+	"translate_tabs_to_spaces": true,
+	"trim_trailing_white_space_on_save": true,
+	"use_simple_full_screen": true,
+	"show_definitions": false,
+  "overlay_scroll_bars": false,
+  "close_windows_when_empty": true,
+}

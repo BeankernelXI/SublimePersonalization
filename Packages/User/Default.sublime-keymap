@@ -1,0 +1,321 @@
+//
+// WARNING:
+//   Keybindings that follow are not for the faint of heart
+//
+// Debugging? Try:
+//   sublime.log_commands(True)
+//   sublime.log_input(True)
+
+
+[
+  { "keys": ["super+w"], "command": "close_harder"},
+  { "keys": ["super+shift+w"], "command": "close_all" },
+  { "keys": ["super+shift+e"], "command": "slurp_find_string" },
+  { "keys": ["super+k", "super+w"], "command": "close_window" },
+  { "keys": ["super+9"], "command": "last_tab" },
+  { "keys": ["super+0"], "command": "reset_size" },
+
+  { "keys": ["super+["], "command": "jump_back"},
+  { "keys": ["super+]"], "command": "jump_forward"},
+  { "keys": ["super+shift+["], "command": "jump_back_extend"},
+  { "keys": ["super+shift+]"], "command": "jump_forward_extend"},
+
+  { "keys": ["super+k", "super+v"], "command": "fancy_paste"},
+  { "keys": ["super+k", "super+shift+c"], "command": "fancy_copy"},
+  { "keys": ["super+shift+k", "super+shift+c"], "command": "fancy_copy"},
+  { "keys": ["super+shift+j"], "command": "fancy_join" },
+  { "keys": ["super+k","super+d"], "command": "fancy_duplicate_line" }, // super shift d is the default duplicate line
+
+  // need to workshop these keys:
+  // and maybe move off of 'a'? swap something else onto it
+  { "keys": ["super+a"], "command": "fancy_find_under", "args":{"mode":"all"} },
+  { "keys": ["super+shift+a"], "command": "fancy_find_under", "args":{} },
+  // { "keys": ["super+k", "super+a"], "command": "fancy_find_under", "args":{} },
+  // { "keys": ["super+d"], "command": "select_words" },
+
+  { "keys": ["super+r"], "command": "find_next" },
+  { "keys": ["super+shift+r"], "command": "find_prev" },
+
+  { "keys": ["super+v"], "command": "paste_and_indent" },
+  { "keys": ["super+shift+v"], "command": "paste" },
+  { "keys": ["super+p"], "command": "text_pastry_show_command_line", "args": { "text": "" } },
+  { "keys": ["super+shift+i"], "command": "select_until", "args": { "extend": true } },
+  { "keys": ["super+shift+backspace"], "command": "run_macro_file", "args": {"file": "res://Packages/Default/Delete Line.sublime-macro"} },
+  { "keys": ["super+g"], "command": "show_overlay", "args": {"overlay": "goto", "text": ":"} },
+  { "keys": ["super+b"], "command": "goto_definition" },
+
+  { "keys": ["super+alt+ctrl+p"], "command": "expand_selection_to_paragraph" },
+  { "keys": ["ctrl+k"], "command": "expand_selection", "args": {"to": "brackets"} },
+  { "keys": ["ctrl+k"], "command": "expand_selection", "args": {"to": "scope"}, "context":
+      [{ "key": "selector", "operator": "equal", "operand": "string.quoted", "match_all": true}] },
+      { "keys": ["super+k", "super+x"], "command": "brace_replace" },
+  { "keys": ["ctrl+l"], "command": "expand_selection", "args": {"to": "indentation"} },
+
+  { "keys": ["ctrl+s"], "command": "my_transpose" }, // default transpose is a mess with empty selections
+  { "keys": ["ctrl+shift+s"], "command": "inline_transpose" }, // default transpose is a mess with empty selections
+  { "keys": ["ctrl+f5"], "command": "sort_selection", "args": {"case_sensitive": false} },
+  { "keys": ["super+shift+x"], "command": "reduce_to_edges"},
+  { "keys": ["ctrl+forward_slash"], "command": "slurp" },
+  { "keys": ["ctrl+y"], "command": "yoink" },
+  // { "keys": ["super+shift+y"], "command": "yoink" },
+  { "keys": ["ctrl+i"], "command": "invert_selection"},
+  { "keys": ["super+j"], "command": "toggle_in_selection", "context": [ { "key": "setting.is_widget", "operator": "equal", "operand": true } ] },
+  { "keys": ["super+k","super+p"], "command": "pull" },
+  { "keys": ["super+shift+c"], "command": "clear_empty_regions"},
+  { "keys": ["ctrl+n"], "command": "toggle_overwrite" },
+  { "keys": ["super+shift+forward_slash"], "command": "toggle_comment", "args":{"block": true} },
+
+
+  { "keys": ["ctrl+x"], "command": "select_gaps" },
+  { "keys": ["alt+up"], "command": "move_to_next_gap_boundry", "args": {"forward": false} },
+  // { "keys": ["alt+up"], "command": "move", "args": {"by": "stops", "empty_line": true, "forward": false} },
+  { "keys": ["alt+down"], "command": "move_to_next_gap_boundry", "args": {"forward": true} },
+  // { "keys": ["alt+down"], "command": "move", "args": {"by": "stops", "empty_line": true, "forward": true} },
+  { "keys": ["shift+alt+up"], "command": "move_to_next_gap_boundry", "args": {"forward": false, "extend": true}},
+  // { "keys": ["shift+alt+up"], "command": "move", "args": {"by": "stops", "empty_line": true, "forward": false, "extend": true}},
+  { "keys": ["shift+alt+down"], "command": "move_to_next_gap_boundry", "args": {"forward": true, "extend": true}},
+  // { "keys": ["shift+alt+down"], "command": "move", "args": {"by": "stops", "empty_line": true, "forward": true, "extend": true}},
+
+  { "keys": ["super+shift+k","super+d"], "command": "dup_and_comment" },
+  { "keys": ["super+shift+k","super+shift+d"], "command": "dup_and_comment" },
+  // { "keys": ["ctrl+v"], "command": "single_selection"},
+  // { "keys": ["super+alt+d"], "command": "find_under_expand_skip" },
+  // { "keys": ["super+k", "super+k"], "command": "REMINDER TO REVISIT: reverse_in_selection"},
+
+  // { "keys": ["super+k", "super+k"], "command": "fancy_find_under", "args":{}},
+  // { "keys": ["super+shift+k", "super+shift+k"], "command": "build_with_phantoms", "args":{"modes":["clear"]}},
+  { "keys": ["ctrl+r"], "command": "reverse_regions"},
+  { "keys": ["ctrl+shift+r"], "command": "make_regions_left_to_right"},
+  { "keys": ["super+k", "super+c"], "command": "accumulating_copy"},
+  { "keys": ["super+k","super+f"], "command": "find_from_clipboard"},
+  { "keys": ["super+k","super+shift+f"], "command": "find_from_clipboard", "args": {"in_selection": true}},
+  { "keys": ["super+shift+k","super+shift+f"], "command": "find_from_clipboard", "args": {"in_selection": true}},
+
+  { "keys": ["super+y"], "command": "unicode_escape"}, // this and the next can be repurposed
+  { "keys": ["super+shift+y"], "command": "unicode_literalize"},
+  { "keys": ["super+ctrl+right"], "command": "move", "args": {"by": "words", "word_begin": true, "forward": true}},
+  { "keys": ["super+ctrl+left"], "command": "move", "args": {"by": "word_ends", "forward": false}},
+  { "keys": ["super+shift+ctrl+right"], "command": "move", "args": {"by": "words", "word_begin": true, "forward": true, "extend": true}},
+  { "keys": ["super+shift+ctrl+left"], "command": "move", "args": {"by": "word_ends", "forward": false, "extend": true}},
+  { "keys": ["ctrl+shift+m"], "command": "each_char"},
+  { "keys": ["super+k","super+e"], "command": "each_char"},
+  { "keys": ["super+k","super+r"], "command": "refactor"},
+  { "keys": ["f5"], "command": "reset_reference_document" },
+  { "keys": ["super+k","super+shift+forward_slash"], "command": "toggle_hunk_diff_entire_file"},
+  { "keys": ["super+shift+k","super+shift+forward_slash"], "command": "toggle_hunk_diff_entire_file"},
+
+  // would be nice to automatically trigger the basic build mode
+  { "keys": ["super+shift+b"], "command": "build_with_phantoms", "args":{"mode":"build"}},
+  { "keys": ["super+k","super+b"], "command": "build_with_phantoms", "args":{"modes":["clear","add","build"]}},
+  { "keys": ["super+shift+k","super+shift+b"], "command": "build_with_phantoms", "args":{"modes":["add","build"]}},
+
+
+
+  { "keys": ["super+'"], "command": "merge_group"},
+  { "keys": ["super+shift+'"], "command": "next_group"},
+  { "keys": ["super+;"], "command": "rotate_group"},
+  { "keys": ["super+shift+;"], "command": "recall_group"},
+  { "keys": ["super+k","super+'"], "command": "clear_group" },
+  // { "keys": ["super+k", "super+k"], "command": "test_group"},
+
+  { "keys": ["super+,"], "command": "left_or_right", "args": {"direction": "left"}},
+  { "keys": ["super+."], "command": "left_or_right", "args": {"direction": "right"}},
+  { "keys": ["super+shift+,"], "command": "select_edges", "args": {"direction": "left"}},
+  { "keys": ["super+shift+."], "command": "select_edges", "args": {"direction": "right"}},
+  { "keys": ["super+alt+,"], "command": "shift_region_left" },
+  { "keys": ["super+alt+."], "command": "shift_region_right" },
+
+
+  // { "keys": ["super+k","super+,"], "command": "edit_settings", "args":
+  //   { "base_file": "${packages}/Default/Default (OSX).sublime-keymap", }
+  // },
+  { "keys": ["super+alt+i"], "command": "toggle_regex",
+    "context": [{ "key": "panel_visible", "operator": "equal", "operand": true }],
+  },
+
+
+
+
+  // makes newlines in comments do the right thing, even with multiline comments
+  { "keys": ["enter"], "command": "smart_newline",
+    "context": [{ "key": "selector", "operator": "equal", "operand": "comment", "match_all": true}],
+  },
+  { "keys": ["super+enter"], "command": "add_line" },
+  { "keys": ["super+shift+enter"], "command": "add_line", "args": {"forward": false} },
+  { "keys": ["super+backspace"], "command": "delete_to" },
+  { "keys": ["super+delete"], "command": "delete_to", "args": {"forward": true} },
+
+
+
+
+
+  // Auto-pair brackets, with improved snippet fields
+  { "keys": ["("], "command": "insert_snippet", "args": {"contents": "$2($1)$3"}, "context":
+    [
+      { "key": "setting.auto_match_enabled", "operator": "equal", "operand": true },
+      { "key": "selection_empty", "operator": "equal", "operand": true, "match_all": true },
+      { "key": "following_text", "operator": "regex_contains", "operand": "^(?:\t| |\\)|]|;|\\}|$)", "match_all": true }
+    ]
+  },
+  { "keys": ["("], "command": "insert_snippet", "args": {"contents": "$2(${1:$SELECTION})$3"}, "context":
+    [
+      { "key": "setting.auto_match_enabled", "operator": "equal", "operand": true },
+      { "key": "selection_empty", "operator": "equal", "operand": false, "match_all": true },
+    ]
+  },
+  // Auto-pair square brackets, with improved snippet fields
+  { "keys": ["["], "command": "insert_snippet", "args": {"contents": "[$1]$3"}, "context":
+    [
+      { "key": "setting.auto_match_enabled", "operator": "equal", "operand": true },
+      { "key": "selection_empty", "operator": "equal", "operand": true, "match_all": true },
+      { "key": "following_text", "operator": "regex_contains", "operand": "^(?:\t| |\\)|]|;|\\}|$)", "match_all": true }
+    ]
+  },
+  { "keys": ["["], "command": "insert_snippet", "args": {"contents": "[${1:$SELECTION}$2]$3"}, "context":
+    [
+      { "key": "setting.auto_match_enabled", "operator": "equal", "operand": true },
+      { "key": "selection_empty", "operator": "equal", "operand": false, "match_all": true },
+    ]
+  },
+  // Auto-pair curly brackets, with improved snippet fields
+  { "keys": ["{"], "command": "insert_snippet", "args": {"contents": "{$1}$3"}, "context":
+    [
+      { "key": "setting.auto_match_enabled", "operator": "equal", "operand": true },
+      { "key": "selection_empty", "operator": "equal", "operand": true, "match_all": true },
+      { "key": "following_text", "operator": "regex_contains", "operand": "^(?:\t| |\\)|]|\\}|$)", "match_all": true }
+    ]
+  },
+  { "keys": ["{"], "command": "insert_snippet", "args": {"contents": "{${1:$SELECTION}$2}$3"}, "context":
+    [
+      { "key": "setting.auto_match_enabled", "operator": "equal", "operand": true },
+      { "key": "selection_empty", "operator": "equal", "operand": false, "match_all": true },
+    ]
+  },
+  // Extra newline for curly brackets
+  // this could be crazier if I really wanted (look ahead for the curly at the end of the line)
+  { "keys": ["enter"], "command": "run_macro_file", "args": {"file": "res://Packages/Default/Add Line in Braces.sublime-macro"}, "context":
+    [
+      { "key": "setting.auto_indent", "operator": "equal", "operand": true },
+      { "key": "selection_empty", "operator": "equal", "operand": true, "match_all": true },
+      { "key": "following_text", "operator": "regex_contains", "operand": "^\\}", "match_all": true }
+    ]
+  },
+  // Auto-pair quotes, with improved snippet fields
+  { "keys": ["\""], "command": "insert_snippet", "args": {"contents": "\"$1\"$3"}, "context":
+    [
+      { "key": "setting.auto_match_enabled", "operator": "equal", "operand": true },
+      { "key": "selection_empty", "operator": "equal", "operand": true, "match_all": true },
+      { "key": "following_text", "operator": "regex_contains", "operand": "^(?:\t| |\\)|]|\\}|>|$)", "match_all": true },
+      { "key": "preceding_text", "operator": "not_regex_contains", "operand": "[\"a-zA-Z0-9_]$", "match_all": true },
+      { "key": "eol_selector", "operator": "not_equal", "operand": "string.quoted.double - punctuation.definition.string.end", "match_all": true }
+    ]
+  },
+  { "keys": ["\""], "command": "insert_snippet", "args": {"contents": "\"${1:$SELECTION}\"$3"}, "context":
+      [
+        { "key": "setting.auto_match_enabled", "operator": "equal", "operand": true },
+        { "key": "selection_empty", "operator": "equal", "operand": false, "match_all": true }
+      ]
+    },
+  // Auto-pair single quotes, with improved snippet fields
+  { "keys": ["'"], "command": "insert_snippet", "args": {"contents": "'$1'$3"}, "context":
+    [
+      { "key": "setting.auto_match_enabled", "operator": "equal", "operand": true },
+      { "key": "selection_empty", "operator": "equal", "operand": true, "match_all": true },
+      { "key": "following_text", "operator": "regex_contains", "operand": "^(?:\t| |\\)|]|\\}|>|$)", "match_all": true },
+      { "key": "preceding_text", "operator": "not_regex_contains", "operand": "['a-zA-Z0-9_]$", "match_all": true },
+      { "key": "eol_selector", "operator": "not_equal", "operand": "string.quoted.single - punctuation.definition.string.end", "match_all": true }
+    ]
+  },
+  { "keys": ["'"], "command": "insert_snippet", "args": {"contents": "'${1:$SELECTION}'$3"}, "context":
+      [
+        { "key": "setting.auto_match_enabled", "operator": "equal", "operand": true },
+        { "key": "selection_empty", "operator": "equal", "operand": false, "match_all": true }
+      ]
+    },
+  //  Auto-pair Ruby vertical bar
+  { "keys": ["|"], "command": "insert_snippet", "args": {"contents": "|$1|$3"}, "context":
+    [
+      { "key": "setting.auto_match_enabled", "operator": "equal", "operand": true },
+      { "key": "selection_empty", "operator": "equal", "operand": true, "match_all": true },
+      { "key": "selector", "operator": "equal", "operand": "source.ruby", "match_all": true },
+      { "key": "selector", "operator": "not_equal", "operand": "string", "match_all": true },
+    ]
+  },
+  { "keys": ["backspace"], "command": "run_macro_file", "args": {"file": "res://Packages/Default/Delete Left Right.sublime-macro"}, "context":
+    [
+      { "key": "setting.auto_match_enabled", "operator": "equal", "operand": true },
+      { "key": "selection_empty", "operator": "equal", "operand": true, "match_all": true },
+      { "key": "preceding_text", "operator": "regex_contains", "operand": "\\|$", "match_all": true },
+      { "key": "following_text", "operator": "regex_contains", "operand": "^\\|", "match_all": true }
+    ]
+  },
+  { "keys": ["|"], "command": "move", "args": {"by": "characters", "forward": true}, "context":
+    [
+      { "key": "setting.auto_match_enabled", "operator": "equal", "operand": true },
+      { "key": "selection_empty", "operator": "equal", "operand": true, "match_all": true },
+      { "key": "following_text", "operator": "regex_contains", "operand": "^\\|", "match_all": true },
+      { "key": "selector", "operator": "equal", "operand": "source.ruby", "match_all": true },
+
+    ]
+  },
+
+  // Tab Completion Nightmare
+  // (remember, highest priority is the BOTTOM of the list)
+  { "keys": ["tab"], "command": "indent", },
+  // { "keys": ["tab"], "command": "insert_best_completion", "args": {"default": "", "exact": false},
+  //   "context":
+  //   [
+  //     { "key": "setting.tab_completion", "operator": "equal", "operand": true },
+  //     { "key": "preceding_text", "operator": "regex_match", "operand": ".+\\b$", "match_all": true },
+  //     { "key": "following_text", "operator": "not_regex_match", "operand": "^\\b.*", "match_all": true },
+  //     { "key": "selection_empty", "operator": "equal", "operand": true, "match_all": true },
+  //   ]
+  // },
+  { "keys": ["tab"], "command": "reindent", "context":
+    [
+      { "key": "selection_empty", "operator": "equal", "operand": true, "match_all": true },
+      { "key": "preceding_text", "operator": "regex_match", "operand": "^$", "match_all": true },
+      { "key": "following_text", "operator": "regex_match", "operand": "^$", "match_all": true },
+    ]
+  },
+  { "keys": ["tab"], "command": "insert_best_completion", "args": {"default": "", "exact": false},
+    "context":
+    [
+      // { "key": "setting.tab_completion", "operator": "equal", "operand": true },
+      { "key": "preceding_text", "operator": "regex_match", "operand": ".+\\b$", "match_all": true },
+      // { "key": "following_text", "operator": "not_regex_match", "operand": "^\\b.*", "match_all": true },
+      { "key": "selection_empty", "operator": "equal", "operand": true, "match_all": true },
+      { "key": "has_next_field", "operator": "equal", "operand": false },
+    ]
+  },
+  { "keys": ["tab"], "command": "replace_completion_with_next_completion", "context":
+    [
+      { "key": "last_command", "operator": "equal", "operand": "insert_best_completion" },
+      { "key": "setting.tab_completion", "operator": "equal", "operand": true },
+      { "key": "has_next_field", "operator": "equal", "operand": false },
+    ]
+  },
+  { "keys": ["tab"], "command": "next_field", "context":
+    [
+      { "key": "has_next_field", "operator": "equal", "operand": true },
+    ]
+  },
+  { "keys": ["shift+space"], "command": "insert_best_completion", "args": {"default": "", "exact": false},
+    "context":
+    [
+      // { "key": "setting.tab_completion", "operator": "equal", "operand": true },
+      // { "key": "preceding_text", "operator": "regex_match", "operand": ".+\\b$", "match_all": true },
+      // { "key": "following_text", "operator": "not_regex_match", "operand": "^\\b.*", "match_all": true },
+      // { "key": "selection_empty", "operator": "equal", "operand": true, "match_all": true },
+      // { "key": "last_command", "operator": "not_equal", "operand": "next_field" },
+      // { "key": "has_next_field", "operator": "equal", "operand": true },
+    ]
+  },
+  { "keys": ["shift+space"], "command": "replace_completion_with_next_completion", "context":
+    [
+      { "key": "last_command", "operator": "equal", "operand": "insert_best_completion" },
+      { "key": "setting.tab_completion", "operator": "equal", "operand": true },
+    ]
+  },
+
+]

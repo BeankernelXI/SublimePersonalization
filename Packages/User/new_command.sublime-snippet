@@ -1,0 +1,25 @@
+<snippet>
+    <content>
+
+<![CDATA[
+class $1Command(sublime_plugin.TextCommand):
+  def run(self, edit):
+    print("$1")
+    v = self.view
+    new_regions = []
+    for region in v.sel():
+
+      ${0:new_regions.append(region)}
+
+    if len(new_regions) > 0:
+      v.show(new_regions[0])
+      v.sel().clear()
+      v.sel().add_all(new_regions)
+]]>
+  <!-- ${SELECTION/\.delay\b(\()?/\.delay\(priority: 0(?1:\))/g}
+ -->
+</content>
+    <tabTrigger>command</tabTrigger>
+    <scope>source.python</scope>
+    <description></description>
+</snippet>

@@ -1,0 +1,18 @@
+<snippet>
+    <content>
+
+<![CDATA[
+if \$0 == __FILE__
+
+  $0
+
+end
+]]>
+
+</content>
+    <tabTrigger></tabTrigger>
+    <scope>source.ruby</scope>
+    <description>end of source file</description>
+</snippet>
+
+

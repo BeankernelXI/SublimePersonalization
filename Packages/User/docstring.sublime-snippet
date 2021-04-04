@@ -1,0 +1,15 @@
+<snippet>
+    <content>
+
+<![CDATA[
+<<~${1/(\S)|\s/\U$1\E/gm}
+  ${0:${1:DOCSTRING}}
+  $SELECTION
+${1/(\S)|\s/\U$1\E/gm}
+]]>
+
+</content>
+    <tabTrigger></tabTrigger>
+    <scope>source.ruby</scope>
+    <description></description>
+</snippet>
