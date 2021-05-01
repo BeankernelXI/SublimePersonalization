@@ -1,12 +1,21 @@
 TODO:
 
+snip for in-comment unjoin on comma
+
+
+super+l : no new-line
+add v.show(v.sel()[0]) all over the place
+  findfromclipboard
+make that vim thing that keeps the cursor in the middle-ish of the screen
+  viewport_position and visible_region
+
 ghost pepper:
   rescue
+    implemented by running the file first to check for errors :P
     bonus points: mark the location of the error
 soup:
   move to gap:
     up should leave cursor at soft BOL, especially with extend on
-    --
     option to only match lines at the same indentation
   smartnewline:
     if next line has stuff on it,
@@ -15,7 +24,10 @@ soup:
           even.tho(this.is.here)            # cursor ends up here
       shift+enter for this ^^
     also,
-      there's potential to be smart about jumping outof the middle of a comment
+      there's potential to be smart about jumping out of a comment
+  comments in general
+    always align the beginning of the comment (#) when making a sequence
+    give the option to write "over" the next line instead of making a new one
   delete to:
     ctrl+super+delete to delete to soft bol
   add line:
@@ -43,6 +55,13 @@ fancy:
 
 general:
   investigate super+[ and clean up commands to improve it
+    more specifically, make it distinct from super+u
+      soft undo will only act within the current file
+      and can't multiverse timetravel
+    if view != history.first.view: show(history.first)
+    move_listenner#did I do a different move than last time?:
+      add it to the history
+  window wide or app wide?
 
 bakewell:
   join also lets us modify each string

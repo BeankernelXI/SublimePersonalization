@@ -28,6 +28,8 @@ class BuildWithPhantomsCommand(sublime_plugin.TextCommand):
   def run(self, edit, mode=None, modes=[]):
     print("BuildWithPhantoms")
     v = self.view
+    # BUG: supplying just mode accumulates it in modes
+    # eg ['build', 'build', 'build', 'build', 'build', 'build']
     if mode: modes.append(mode) # to make the api more flexible
     print(modes)
 
@@ -51,7 +53,8 @@ class BuildWithPhantomsCommand(sublime_plugin.TextCommand):
       # print(output_json)
       v.erase_phantoms(self.MAGIC_KEY)
       self.create_phantoms(output_json)
-      self.mark_regions(output_json)
+      # self.mark_regions(output_json)
+
 
   def run_file(self,additional_lines):
     whole_file = self.view.substr(sublime.Region(0,self.view.size()))
@@ -85,7 +88,7 @@ class BuildWithPhantomsCommand(sublime_plugin.TextCommand):
 
     out, err = s.communicate(new_whole_file.encode('utf8'))
     if err:
-      print(err)
+      print(str(err))
       raise
     matcher = '(%s)(.*)\\n'%(self.MAGIC_STRING)
     match = re.search(matcher, out.decode('utf8'))
@@ -123,6 +126,7 @@ class BuildWithPhantomsCommand(sublime_plugin.TextCommand):
     # creates a phantom for each one
     phantoms = {}
     for output in json.loads(output_json):
+      # setdefault is fetch, NOT default=  ........
       phantoms.setdefault(output['points'],[]).append(output['result'])
     for points, results in phantoms.items():
       points = json.loads(points)
@@ -138,11 +142,11 @@ class BuildWithPhantomsCommand(sublime_plugin.TextCommand):
   def explain_results(self,results):
     results_set = list(set(results))
     if len(results_set) == 1:
-      return html.escape( "=> " + results[0] )
+      return html.escape( "=> " + results[0], False )
     elif len(results) > 10:
-      return html.escape( "*> " + ', '.join(results[0:3])+", ... "+', '.join(results[-3::]) )
+      return html.escape( "*> " + ', '.join(results[0:3])+", ... "+', '.join(results[-3::]), False )
     else:
-      return html.escape( "*> " + ', '.join(results) )
+      return html.escape( "*> " + ', '.join(results), False )
 
 
 

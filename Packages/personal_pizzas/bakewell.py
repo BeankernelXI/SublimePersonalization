@@ -1,6 +1,8 @@
 import sublime
 import sublime_plugin
 
+import re
+
 from User.SelectionGroups import *
 
 

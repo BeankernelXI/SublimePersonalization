@@ -15,6 +15,8 @@ import re
 
 # duplicate the current line pasting each clipboard item on a new dup
 class FancyPasteCommand(sublime_plugin.TextCommand):
+  # BUG: fails strangely when clipboard ends in newline
+  # is it really a bug tho if the default paste is to blame
   def run(self, edit, standin_clipboard = None):
     print("FancyPaste")
     v = self.view
@@ -32,11 +34,11 @@ class FancyCopyCommand(sublime_plugin.TextCommand):
   def run(self, edit):
     print("FancyCopy")
     v = self.view
-    unique_content = set([v.substr(region) for region in v.sel()])
+    unique_content = set([ v.substr(region) for region in v.sel() ])
     if len(unique_content) == 1:
       [unique_str] = unique_content
-      return sublime.set_clipboard(unique_str)
-    return v.run_command('copy')
+      sublime.set_clipboard(unique_str)
+    else: v.run_command('copy')
 
 class AccumulatingCopyCommand(sublime_plugin.TextCommand):
   def run(self, edit):
@@ -182,6 +184,56 @@ class SelectWordsCommand(sublime_plugin.TextCommand):
      if region.empty() or mode == 'always':
        new_regions.append(v.word(region))
     v.sel().add_all(new_regions)
+
+
+
+
+
+
+
+class MyPasteCommand(sublime_plugin.TextCommand):
+  def run(self, edit):
+    print("MyPaste")
+    v = self.view
+    new_regions = []
+    # interpret clipboard
+    clipboard = sublime.get_clipboard()
+    clipboard_state = oneof['solid', 'iterable', 'doubled']
+    # interpret selections
+    #   if total number of sel is a multiple of cb length
+    #   then normal paste multiples (by cols or rows?)
+    #                           aka 1 1 2 2 3 3 or 1 2 3 1 2 3
+    #   if all lines have the same number of selections
+    #   then fancy paste, repeating each cb line for each sel on the line
+    # if blunt: just call the builtin?
+
+    # we [default to blunt paste, basic fancy paste,(fancy?) paste onto newline]
+    # iterate
+    for region in v.sel():
+      # design goals:
+      # - always do the paste onto newline thing if
+      #        splitting on /\n\n|\n\EOF/ leaves no \n left
+      #        ^^ doing it literally like this sounds inefficient
+      # - selections on the same line get special consideration
+      #     InsertToAlign had similar requirements
+      # - default to fancy paste, option for blunt paste
+      # -
+
+      new_regions.append(region)
+
+    if len(new_regions) > 0:
+      v.show(new_regions[0])
+      v.sel().clear()
+      v.sel().add_all(new_regions)
+
+
+
+
+
+
+
+
+
 
 
 

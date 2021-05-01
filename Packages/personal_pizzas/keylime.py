@@ -135,8 +135,27 @@ class ShiftRegionRightCommand(sublime_plugin.TextCommand):
       v.erase(edit, region_from)
       v.insert(edit, point_to, string)
 
+# creates selections between pairs of cursors
+class SlurpCommand(sublime_plugin.TextCommand):
+  def run(self, edit):
+    print("Slurp")
+    v = self.view
+    s = list(v.sel())
+    v.sel().clear()
+    if len(s) % 2 is 0:
+      for pairs in zip(s[::2],s[1::2]):
+        start = pairs[0].begin()
+        end = pairs[1].end()
+        v.sel().add(sublime.Region(start,end))
+    else:
+      start = s[0].begin()
+      end = s[-1].end()
+      v.sel().add(sublime.Region(start,end))
+
+
 # opposite of slurp, creates cursors on the edges of selections
 class ReduceToEdgesCommand(sublime_plugin.TextCommand):
+  # { "keys": ["super+shift+x"], "command": "reduce_to_edges"},
   def run(self, edit):
     print("ReduceToEdges")
     v = self.view
