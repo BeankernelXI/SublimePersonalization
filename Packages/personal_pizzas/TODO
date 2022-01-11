@@ -37,7 +37,9 @@ soup:
   fancy copy:
     research putting delimeters between regions
       the paste commands are not smart enough when pasting multiline regions
-
+personal_pizza:
+  refactor:
+    add let if appropriate
 fancy:
   find_under:
     option to only select whole words

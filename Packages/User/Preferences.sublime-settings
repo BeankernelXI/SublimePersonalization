@@ -1,11 +1,21 @@
 {
-	"added_words":
-	[
+	"added_words": [
 		"meme"
 	],
+	"tab_completion": true,
 	"auto_complete": false,
+	"auto_complete_delay": 0,
+	// "mini_auto_complete": true,
 	"auto_complete_commit_on_tab": true,
+	"auto_complete_use_index": true,
+	"auto_complete_cycle": true,
+	"auto_complete_use_history": true,
+	"auto_complete_trailing_spaces": true,
+	"auto_complete_trailing_symbols": true,
+	"auto_complete_selector": "meta.tag, source - comment - string.quoted.double.block - string.quoted.single.block - string.unquoted.heredoc",
 	"auto_find_in_selection": true,
+	"auto_complete_include_snippets": true,
+	"auto_complete_include_snippets_when_typing": false,
 	"binary_file_patterns":
 	[
 		".html",
@@ -13,19 +23,18 @@
 	],
 	"clear_fields_on_move": true,
 	"close_windows_when_empty": true,
-	"color_scheme": "Packages/User/Monokai1.tmTheme",
+	"color_scheme": "Packages/Color Scheme - Default/Monokai.sublime-color-scheme",
 	"default_font_size": 12,
 	"drag_text": false,
 	"ensure_newline_at_eof_on_save": true,
 	"font_size": 12,
-	"ignored_packages":
-	[
-		"Vintage"
+	"ignored_packages": [
+		"Vintage",
 	],
 	"mini_diff": true,
 	"overlay_scroll_bars": false,
 	"save_on_focus_lost": true,
-	"scroll_past_end": true,
+	"scroll_past_end": 0.5,
 	"shift_tab_unindent": true,
 	"show_definitions": false,
 	"spell_check": false,
@@ -33,6 +42,17 @@
 	"tab_size": 2,
 	"theme": "Default.sublime-theme",
 	"translate_tabs_to_spaces": true,
-	"trim_trailing_white_space_on_save": true,
-	"use_simple_full_screen": true
+	"trim_trailing_white_space_on_save": "not_on_caret",
+	"use_simple_full_screen": true,
+	"relative_line_numbers": true,
+	"highlight_find_results_in_scrollbar": false,
+	"file_tab_style": "angled",
+	"inactive_sheet_dimming": false,
+	"caret_extra_top": 0,
+	"caret_extra_bottom": 0,
+	"caret_extra_width": 1,
+	// "caret_style": "smooth",
+	"block_caret": false,
+
+	"update_check": false,
 }
